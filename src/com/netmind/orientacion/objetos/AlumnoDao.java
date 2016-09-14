@@ -61,6 +61,8 @@ public class AlumnoDao implements IAlumnoDao<Alumno> {
 			log.error("testAddJson", e);
 
 		}
+		
+		
 
 	}
 

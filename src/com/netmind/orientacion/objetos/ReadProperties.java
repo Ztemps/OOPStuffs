@@ -8,13 +8,19 @@ import java.util.Properties;
 
 public class ReadProperties {
 
-	public String geDatosProperties(String campo) throws FileNotFoundException, IOException {
+	public static String getDatosProperties(String campo) throws FileNotFoundException, IOException {
 
 		Properties propiedades = new Properties();
 		InputStream entrada = null;
-		entrada = new FileInputStream("configuracion.properties");
-		propiedades.load(entrada);
-		propiedades.getProperty(campo);
+		
+		try {
+			entrada = new FileInputStream("configuracion.properties");
+			propiedades.load(entrada);
+			propiedades.getProperty(campo);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return propiedades.toString();
 
