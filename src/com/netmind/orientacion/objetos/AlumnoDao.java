@@ -16,55 +16,52 @@ import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 
+public class AlumnoDao implements IAlumnoDao<Alumno> {
 
-public class AlumnoDao {
-	
 	private final static Logger log = Logger.getLogger(AlumnoDao.class);
+	ReadProperties readProperties = new ReadProperties();
 
-
+	Singleton singleton = new Singleton();
 	public int add(Alumno alumno, int formato) throws IOException {
 
-		Properties propiedades = new Properties();
-		InputStream entrada = null;
-
-		entrada = new FileInputStream("configuracion.properties");
 		
-        propiedades.load(entrada);
+//		if (formato == 1) {
+//			try {
+//				BufferedWriter bw = new BufferedWriter(new FileWriter(readProperties.geDatosProperties("listaAlumnos"), true));
+//				bw.append(alumno.toString());
+//				bw.newLine();
+//				bw.close();
+//			
+//
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//				log.error("testAdd", e);
+//				throw e;
+//			}
+//		} else {
+//
+//			addAlumnoJson(alumno);
+//
+//		}
+	
 		
-		if (formato == 1) {
-			try {
-				BufferedWriter bw = new BufferedWriter(new FileWriter((propiedades.getProperty("listaAlumnos")), true));
-				bw.append(alumno.toString());
-				bw.newLine();
-				bw.close();
-				
-			} catch (IOException e) {
-				e.printStackTrace();
-				log.error("testAdd",e);
-				throw e;
-			}
-		} else {
-			
-			addAlumnoJson(alumno);
-			
-		}
 		return alumno.getIdAlumno();
 	}
 
-	private void addAlumnoJson(Alumno alumno) throws IOException {
+	public void addAlumnoJson(Alumno alumno) throws IOException {
 		Gson gson = new Gson();
 		try {
-			
+
 			BufferedWriter bw = new BufferedWriter(new FileWriter("listaAlumnosJson.json", true));
-			gson.toJson(alumno,bw);
+			gson.toJson(alumno, bw);
 			bw.close();
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
-			log.error("testAddJson",e);
+			log.error("testAddJson", e);
 
 		}
-		
+
 	}
 
 	public ArrayList<Alumno> getAll() throws IOException {

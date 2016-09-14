@@ -18,7 +18,8 @@ public class Principal {
 		Scanner scanner = new Scanner(System.in);
 		Alumno alumno = new Alumno();
 		AlumnoDao alumnoDao = new AlumnoDao();
-
+		IAlumnoDao<Alumno> dao = new AlumnoDao();
+		
 		int opcion = 0;
 		int formato = 0;
 
