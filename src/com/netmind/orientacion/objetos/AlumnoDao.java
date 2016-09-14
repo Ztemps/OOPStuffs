@@ -43,7 +43,7 @@ public class AlumnoDao implements IAlumnoDao<Alumno> {
 //			addAlumnoJson(alumno);
 //
 //		}
-	
+		singleton.getInstance().add(alumno);
 		
 		return alumno.getIdAlumno();
 	}
