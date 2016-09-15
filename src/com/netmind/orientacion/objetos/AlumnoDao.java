@@ -19,12 +19,9 @@ import com.google.gson.Gson;
 public class AlumnoDao implements IAlumnoDao<Alumno> {
 
 	private final static Logger log = Logger.getLogger(AlumnoDao.class);
-	ReadProperties readProperties = new ReadProperties();
 
-	Singleton singleton = new Singleton();
 	public int add(Alumno alumno, int formato) throws IOException {
-
-		
+	
 //		if (formato == 1) {
 //			try {
 //				BufferedWriter bw = new BufferedWriter(new FileWriter(readProperties.geDatosProperties("listaAlumnos"), true));
@@ -43,28 +40,11 @@ public class AlumnoDao implements IAlumnoDao<Alumno> {
 //			addAlumnoJson(alumno);
 //
 //		}
-		singleton.getInstance().add(alumno);
-		
+		Singleton.getInstance().add(alumno);
 		return alumno.getIdAlumno();
 	}
 
-	public void addAlumnoJson(Alumno alumno) throws IOException {
-		Gson gson = new Gson();
-		try {
-
-			BufferedWriter bw = new BufferedWriter(new FileWriter("listaAlumnosJson.json", true));
-			gson.toJson(alumno, bw);
-			bw.close();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			log.error("testAddJson", e);
-
-		}
-		
-		
-
-	}
+	
 
 	public ArrayList<Alumno> getAll() throws IOException {
 
@@ -93,5 +73,21 @@ public class AlumnoDao implements IAlumnoDao<Alumno> {
 		return list;
 
 	}
+	public void addAlumnoJson(Alumno alumno) throws IOException {
+		Gson gson = new Gson();
 
+		try {
+
+			BufferedWriter bw = new BufferedWriter(new FileWriter("listaAlumnosJson.json", true));
+			gson.toJson(alumno, bw);
+			bw.close();
+
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.error("testAddJson", e);
+
+		}
+		
+	}
 }

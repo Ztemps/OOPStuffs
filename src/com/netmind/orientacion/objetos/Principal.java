@@ -25,11 +25,7 @@ public class Principal {
 
 		do {
 
-		System.out.println("Gestión de Alumnos");
-		System.out.println("1) Introduce alumno");
-		System.out.println("2) Lista alumnos");
-		System.out.println("3) Formato");
-		System.out.println("4) Salir");
+		System.out.println("Gestión de Alumnos\n1) Introduce alumno\n2) Lista alumnos\n3) Formato\n4) Salir");
 		opcion = scanner.nextInt();
 
 			switch (opcion) {
