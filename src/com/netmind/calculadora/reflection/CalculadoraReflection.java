@@ -10,11 +10,12 @@ public class CalculadoraReflection {
 	public static void main(String[] args) throws NoSuchMethodException, SecurityException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException {
 
+		
 		try {
 			
 			Calculadora objetoCalculadora = new Calculadora();
 
-			Class objetoInfoDeMiClase = Class.forName("com.netmind.calculadora.Calculadora");
+			Class<?> objetoInfoDeMiClase = Class.forName("com.netmind.calculadora.Calculadora");
 
 			Method metodoGetSuma = objetoInfoDeMiClase.getMethod("suma", int.class, int.class);
 			Method metodoGetResta = objetoInfoDeMiClase.getMethod("resta", int.class, int.class);
@@ -36,6 +37,12 @@ public class CalculadoraReflection {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
+		
+		
+		
 
 	}
 
